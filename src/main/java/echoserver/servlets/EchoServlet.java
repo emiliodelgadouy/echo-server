@@ -15,6 +15,8 @@ public class EchoServlet extends HttpServlet {
     private void log(HttpServletRequest request, String body) {
         System.out.println("###############################################################################");
         Enumeration<String> headerNames = request.getHeaderNames();
+        System.out.println("URL - " + request.getRequestURI());
+        System.out.println("Method - " + request.getMethod());
         while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
             System.out.println("Header Name - " + headerName + ", Value - " + request.getHeader(headerName));
