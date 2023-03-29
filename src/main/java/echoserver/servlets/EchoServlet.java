@@ -33,7 +33,10 @@ public class EchoServlet extends HttpServlet {
     }
 
     private void dispath(HttpServletRequest req, HttpServletResponse resp, String verb) throws IOException {
-        String body = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        String body = "";
+        try {
+            body = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        } catch (Exception e) {}
         this.log(req, body);
         PrintWriter writer = resp.getWriter();
         writer.println(body);
